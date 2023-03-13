@@ -13,6 +13,10 @@ To learn how to specify a rule, please follow the documentation:
 - [About Rule Specification](https://github.com/green-code-initiative/ecoCode-mobile-rules-specification/blob/main/rules/AboutRuleSpecification.md)
 - [SonarQube Integration](https://github.com/green-code-initiative/ecoCode-mobile-rules-specification/blob/main/rules/SonarQubeIntegration.md)
 
+All the existing rules can be found in the [rules folder](https://github.com/green-code-initiative/ecoCode-mobile-rules-specification/tree/main/rules).
+
+Here is the an example of a complete rule specification: [Uncompressed Data Transmission](https://github.com/green-code-initiative/ecoCode-mobile-rules-specification/blob/main/rules/environment/bottleneck/003_UncompressedDataTransmission.md)
+
 
 ## How to build
 
