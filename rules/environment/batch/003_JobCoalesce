@@ -1,0 +1,81 @@
+\newpage
+
+# Batch: Job Coalesce
+
+## Platform
+
+|   OS          |  OS version  |  Langage  |
+|---------------|--------------|-----------|
+| Android       |      -       |  Java     |
+
+## Main caracteristics
+
+|   ID     | Title                 | Category    | Sub-category   |
+|----------|-----------------------|-------------|----------------|
+| EBAT003  | Job Coalesce          | Environment | Batch          |
+
+## Severity / Remediation Cost
+
+|  Severity  | Remediation Cost |
+|------------|------------------|
+| Minor      | Hard             |
+
+## Rule short description
+
+Avoid using AlarmManager or a SyncAdapter for an alarm. Instead use the JobScheduler because the alarm triggers are mutualized.
+
+## Rule complete description
+
+## Text
+
+The Android 5.0 Lollipop (API 21) release introduces a job scheduler API via the Job Scheduler class.\
+Compared to a custom Sync Adapter or the alarm manager, the Job Scheduler supports batch scheduling of jobs.\
+The Android system can combine jobs so that battery consumption is reduced.
+
+## HTML
+
+```html
+<p>The Android 5.0 Lollipop (API 21) release introduces a job scheduler API via the Job Scheduler class.<br>
+    Compared to a custom Sync Adapter or the alarm manager, the Job Scheduler supports batch scheduling of jobs.<br>
+    The Android system can combine jobs so that battery consumption is reduced.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+    public void setAlarm(Context context)
+    {
+        AlarmManager am =( AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
+        Intent i = new Intent(context, Alarm.class);
+        PendingIntent pi = PendingIntent.getBroadcast(context, 0, i, 0);
+        am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 1000 * 60 * 10, pi);
+    }
+
+    Alarm alarm = new Alarm();
+    alarm.setAlarm(this);
+</pre>
+<h2>Compliant Code Example</h2>
+<pre>
+    JobInfo info = new JobInfo.Builder(123, componentName)
+                .setRequiresCharging(true)
+                .setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED)
+                .setPersisted(true)
+                .setPeriodic(10 * 60 * 1000)
+                .build();
+    JobScheduler scheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+    scheduler.schedule(info);
+</pre>
+```
+
+## Implementation principle
+
+- Checks that the methods `android.app.AlarmManager#set(int, long, PendingIntent)` or\
+    `android.app.AlarmManager#set(int, long, String, AlarmManager.OnAlarmListener, Handler)` or\
+    `android.app.AlarmManager#setAlarmClock(AlarmManager.AlarmClockInfo, PendingIntent)` or\
+    `android.app.AlarmManager#setAndAllowWhileIdle(int, long, PendingIntent)` or\
+    `android.app.AlarmManager#setExact(int, long, PendingIntent)` or\
+    `android.app.AlarmManager#setExact(int, long, String, AlarmManager.OnAlarmListener, Handler)` or\
+    `android.app.AlarmManager#setExactAndAllowWhileIdle(int, long, PendingIntent)` or\
+    `android.app.AlarmManager#setInexactRepeating(int, long, long, PendingIntent)` or\
+    `android.app.AlarmManager#setRepeating(int, long, long, PendingIntent)` or\
+    `android.app.AlarmManager#setWindow(int, long, long, PendingIntent)` or\
+    `android.app.AlarmManager#setWindow(int, long, long, String, AlarmManager.OnAlarmListener, Handler)` or\
+    `android.content.AbstractThreadedSyncAdapter#getSyncAdapterBinder()` or\
+    `android.content.AbstractThreadedSyncAdapter#onPerformSync(Account, Bundle, String, ContentProviderClient, SyncResult)` are called
