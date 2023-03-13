@@ -2,9 +2,17 @@
 
 ## Description
 
-This project contains the technical specifications of the ecoCode rules.
+This project contains the technical specifications of the ecoCode rules for Android.
 
 To build the documentation please install `pandoc` and a `LaTeX engine` (for pdf).
+
+## How to specify a rule
+
+To learn how to specify a rule, please follow the documentation:
+
+- [About Rule Specification](https://github.com/green-code-initiative/ecoCode-mobile-rules-specification/blob/main/rules/AboutRuleSpecification.md)
+- [SonarQube Integration](https://github.com/green-code-initiative/ecoCode-mobile-rules-specification/blob/main/rules/SonarQubeIntegration.md)
+
 
 ## How to build
 
