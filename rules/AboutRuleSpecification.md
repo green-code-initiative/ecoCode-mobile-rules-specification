@@ -22,7 +22,7 @@
 
 ## Main caracteristics
 
-If the rules is in the document of Olivier Le Goaer : <https://pauware.univ-pau.fr/green/android-energy-smells>
+If the rules is in the document of Olivier Le Goaer : <https://github.com/cnumr/best-practices-mobile#android-platform>
 please use the information provided.
 
 ### Title
