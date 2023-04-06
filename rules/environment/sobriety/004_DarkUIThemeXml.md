@@ -62,6 +62,6 @@ or
 
 ## Implementation principle
 
-- Look in project xmls `styles` that inherit `Theme.Holo.Light` or `Theme.AppCompat.Light` themes
-  (or other themes that begin by `Theme.Holo.Light` or `Theme.AppCompat.Light`
-- Check themes set in the manifest that begin by `@android:style/Theme.Holo.Light` or `@style/Theme.AppCompat.Light`
+- Look in project xmls `styles` that inherit `Theme.Holo.Light`, `Theme.AppCompat.Light`, `Theme.Material.Light`, `Theme.Material3.Light` or `Theme.MaterialComponents.Light` themes
+  (or other themes that begin by `Theme.Holo.Light`, `Theme.AppCompat.Light`, `Theme.Material.Light`, `Theme.Material3.Light` or `Theme.MaterialComponents.Light`)
+- Check themes set in the manifest that begin by `@android:style/Theme.Holo.Light`, `@style/Theme.AppCompat.Light`, `@style/Theme.Material.Light`, `@style/Theme.Material3.Light` or `@style/Theme.MaterialComponents.Light`
